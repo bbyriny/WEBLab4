@@ -1,0 +1,80 @@
+.auth-layout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    font-family: Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+    box-sizing: border-box;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.auth-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.app-header {
+    text-align: center;
+    margin-bottom: 30px;
+    color: black;
+}
+
+.app-header h1 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.app-header p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: black;
+}
+
+.auth-box {
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+}
+
+.auth-box h2 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 25px;
+    color: #1c1e21;
+    font-size: 24px;
+}
+
+
+@media (min-width: 658px) {
+    .app-header h1 {
+        font-size: 24px;
+    }
+
+    .app-header p {
+        font-size: 16px;
+    }
+
+    .auth-box {
+        padding: 40px;
+    }
+}
+
+@media (min-width: 1159px) {
+    .app-header {
+        margin-bottom: 50px;
+    }
+
+    .auth-box {
+        max-width: 450px;
+    }
+}
