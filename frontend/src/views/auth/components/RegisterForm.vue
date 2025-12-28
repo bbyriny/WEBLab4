@@ -52,74 +52,75 @@ const onSubmit = async () => {
 </script>
 
 <template>
-  <form @submit.prevent="onSubmit">
+  <form @submit.prevent="onSubmit" class="form">
 
-    <div class="input-group">
-      <label for="username">Логин</label>
+    <div class="form__group">
+      <label class="form__group-label" for="username">Логин</label>
       <input
           id="username"
           type="text"
           v-model="username"
           @blur="onBlur('username')"
           placeholder="Придумайте логин"
-          :class="{ 'error-border': isUserInvalid && touched.username }"
-      >
-      <div v-if="isUserInvalid && touched.username" class="error-list">
-        <div v-if="usernameErrors.required">Логин обязателен.</div>
-        <div v-if="usernameErrors.minlength">Минимум 3 символа.</div>
+          :class="{'form__group-input--error': isUserInvalid && touched.username}"
+          class="form__group-input"
+      />
+      <div v-if="isUserInvalid && touched.username" class="form__error-list">
+        <div v-if="usernameErrors.required" class="form__error-list__item">Логин обязателен.</div>
+        <div v-if="usernameErrors.minlength" class="form__error-list__item">Минимум 3 символа.</div>
       </div>
     </div>
 
-    <div class="input-group">
-      <label for="password">Пароль</label>
+    <div class="form__group">
+      <label class="form__group-label" for="password">Пароль</label>
       <input
           id="password"
           type="password"
           v-model="password"
           @blur="onBlur('password')"
           placeholder="Придумайте пароль"
-          :class="{ 'error-border': isPassInvalid && touched.password }"
-      >
-      <div v-if="isPassInvalid && touched.password" class="error-list">
-        <div v-if="passwordErrors.required">Пароль обязателен.</div>
-        <div v-if="passwordErrors.minlength">Минимум 6 символов.</div>
-        <div v-if="passwordErrors.upper">Нужна заглавная буква.</div>
-        <div v-if="passwordErrors.lower">Нужна строчная буква.</div>
-        <div v-if="passwordErrors.numeric">Нужна цифра.</div>
+          :class="{'form__group-input--error': isPassInvalid && touched.password}"
+          class="form__group-input"
+      />
+      <div v-if="isPassInvalid && touched.password" class="form__error-list">
+        <div v-if="passwordErrors.required" class="form__error-list__item">Пароль обязателен.</div>
+        <div v-if="passwordErrors.minlength" class="form__error-list__item">Минимум 6 символов.</div>
+        <div v-if="passwordErrors.upper" class="form__error-list__item">Нужна заглавная буква.</div>
+        <div v-if="passwordErrors.lower" class="form__error-list__item">Нужна строчная буква.</div>
+        <div v-if="passwordErrors.numeric" class="form__error-list__item">Нужна цифра.</div>
       </div>
     </div>
 
-    <div class="input-group">
-      <label for="confirmPassword">Повторите пароль</label>
+    <div class="form__group">
+      <label class="form__group-label" for="confirmPassword">Повторите пароль</label>
       <input
           id="confirmPassword"
           type="password"
           v-model="confirmPassword"
           @blur="onBlur('confirmPassword')"
           placeholder="Повторите пароль"
-          :class="{ 'error-border': isMismatch && touched.confirmPassword }"
-      >
-      <div v-if="isMismatch && touched.confirmPassword" class="error-list">
-        Пароли не совпадают.
-      </div>
+          :class="{'form__group-input--error': isMismatch && touched.confirmPassword}"
+          class="form__group-input"
+      />
+      <div v-if="isMismatch && touched.confirmPassword" class="form__error-list">
+      <div class="form__error-list__item">Пароли не совпадают.</div>
+    </div>
     </div>
 
-    <div v-if="errorMessage" class="error-message">
-      {{ errorMessage }}
-    </div>
+    <div v-if="errorMessage" class="form__error">{{ errorMessage }}</div>
 
-    <button type="submit" class="main-btn" :disabled="isFormInvalid || isLoading">
+    <button type="submit" class="form__button" :disabled="isFormInvalid || isLoading">
       {{ isLoading ? 'Регистрация...' : 'Зарегистрироваться' }}
     </button>
 
-    <div class="separator">
+    <div class="form__separator">
       Уже есть аккаунт?
-      <router-link to="/auth/login">Войти</router-link>
+      <router-link class="form__separator-link" to="/auth/login">Войти</router-link>
     </div>
 
   </form>
 </template>
 
-<style scoped>
-@import '../assets/register.css';
+<style scoped lang="scss">
+@use '../assets/forms.scss';
 </style>

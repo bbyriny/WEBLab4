@@ -15,35 +15,52 @@ const hit = (p: PointResponse) => checkHit(p.x, p.y, currentR || p.r);
 </script>
 
 <template>
-  <div class="table-container">
-    <div class="table-header">
-      <h2>История</h2>
-      <button class="clear-btn" v-if="points.length > 0" @click="emit('clear')">
+  <div class="table__wrapper">
+    <div class="table__header">
+      <h2 class="table__title">История</h2>
+      <button
+          class="table__clear-btn"
+          v-if="points.length > 0"
+          @click="emit('clear')"
+      >
         Очистить всё
       </button>
     </div>
 
-    <div class="table-responsive">
-      <table>
+    <div class="table__responsive">
+      <table class="table__table">
         <thead>
         <tr>
-          <th>X</th><th>Y</th><th>R</th><th>Результат</th>
-          <th>Текущее время</th><th>Время выполнения</th>
+          <th class="table__cell table__cell--header">X</th>
+          <th class="table__cell table__cell--header">Y</th>
+          <th class="table__cell table__cell--header">R</th>
+          <th class="table__cell table__cell--header">Результат</th>
+          <th class="table__cell table__cell--header">Текущее время</th>
+          <th class="table__cell table__cell--header">Время выполнения</th>
         </tr>
         </thead>
+
         <tbody>
         <tr v-for="p in points" :key="p.id">
-          <td>{{ p.x }}</td>
-          <td>{{ p.y }}</td>
-          <td>{{ p.r }}</td>
-          <td :class="hit(p) ? 'hit' : 'miss'">
+          <td class="table__cell">{{ p.x }}</td>
+          <td class="table__cell">{{ p.y }}</td>
+          <td class="table__cell">{{ p.r }}</td>
+          <td
+              :class="[
+                'table__cell',
+                hit(p) ? 'table__cell--hit' : 'table__cell--miss'
+              ]"
+          >
             {{ hit(p) ? 'Попал' : 'Промах' }}
           </td>
-          <td>{{ p.startTime }}</td>
-          <td>{{ p.executionTime }} мс</td>
+          <td class="table__cell">{{ p.startTime }}</td>
+          <td class="table__cell">{{ p.executionTime }} мс</td>
         </tr>
+
         <tr v-if="points.length === 0">
-          <td colspan="6" class="empty-cell">Нет данных</td>
+          <td colspan="6" class="table__cell table__cell--empty">
+            Нет данных
+          </td>
         </tr>
         </tbody>
       </table>
@@ -51,6 +68,6 @@ const hit = (p: PointResponse) => checkHit(p.x, p.y, currentR || p.r);
   </div>
 </template>
 
-<style scoped>
-@import "../assets/graph.css";
+<style scoped lang="scss">
+@use '../assets/table.scss';
 </style>

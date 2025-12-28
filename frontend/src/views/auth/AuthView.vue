@@ -8,30 +8,24 @@ import backgroundImg from './assets/background.jpg';
 
 const props = defineProps<{ mode: 'login' | 'register' }>();
 const mode = computed(() => props.mode);
-
 </script>
 
 <template>
   <div class="auth-layout" :style="{ backgroundImage: `url(${backgroundImg})` }">
-
     <div class="auth-container">
-
       <AuthHeader />
 
       <main class="auth-box">
-        <h2 v-if="mode === 'login'">Вход</h2>
-        <h2 v-else>Регистрация</h2>
+        <h2 v-if="mode === 'login'" class="auth-box__title">Вход</h2>
+        <h2 v-else class="auth-box__title">Регистрация</h2>
 
-        <LoginForm v-if="mode === 'login'" />
-        <RegisterForm v-else />
-
+        <LoginForm v-if="mode === 'login'" class="auth-box__form" />
+        <RegisterForm v-else class="auth-box__form" />
       </main>
-
     </div>
-
   </div>
 </template>
 
-<style scoped>
-@import 'assets/auth.css';
+<style scoped lang="scss">
+@use 'assets/auth.scss';
 </style>

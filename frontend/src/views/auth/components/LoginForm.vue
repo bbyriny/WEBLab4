@@ -30,30 +30,30 @@ const onSubmit = async () => {
 </script>
 
 <template>
-  <form @submit.prevent="onSubmit">
-    <div class="input-group">
-      <label>Логин</label>
-      <input type="text" v-model="username" required>
+  <form @submit.prevent="onSubmit" class="form">
+    <div class="form__group">
+      <label class="form__group-label">Логин</label>
+      <input type="text" v-model="username" required class="form__group-input" />
     </div>
 
-    <div class="input-group">
-      <label>Пароль</label>
-      <input type="password" v-model="password" required>
+    <div class="form__group">
+      <label class="form__group-label">Пароль</label>
+      <input type="password" v-model="password" required class="form__group-input" />
     </div>
 
-    <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
+    <div v-if="errorMessage" class="form__error">{{ errorMessage }}</div>
 
-    <button :disabled="!username || !password || isLoading">
+    <button type="submit" :disabled="!username || !password || isLoading" class="form__button">
       {{ isLoading ? 'Вход...' : 'Войти' }}
     </button>
 
-    <div class="separator">
+    <div class="form__separator">
       Нет аккаунта?
-      <router-link to="/auth/register">Зарегистрироваться</router-link>
+      <router-link class="form__separator-link" to="/auth/register">Зарегистрироваться</router-link>
     </div>
   </form>
 </template>
 
-<style scoped>
-@import '../assets/login.css';
+<style scoped lang="scss">
+@use '../assets/forms.scss';
 </style>

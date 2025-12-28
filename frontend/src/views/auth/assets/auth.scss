@@ -1,0 +1,75 @@
+.auth {
+  &-layout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    font-family: Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+    box-sizing: border-box;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
+  &-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  &-box {
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+
+    &__title {
+      text-align: center;
+      margin: 0 0 25px;
+      color: #1c1e21;
+      font-size: 24px;
+    }
+
+    &__form {
+      width: 100%;
+      margin-top: 15px;
+    }
+  }
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 30px;
+  color: black;
+
+  &__title {
+    margin: 0;
+    font-size: 22px;
+  }
+
+  &__subtitle {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: black;
+  }
+}
+
+@media (min-width: 658px) {
+  .app-header {
+    &__title { font-size: 24px; }
+    &__subtitle { font-size: 16px; }
+  }
+
+  .auth-box { padding: 40px; }
+}
+
+@media (min-width: 1159px) {
+  .app-header { margin-bottom: 50px; }
+  .auth-box { max-width: 450px; }
+}
